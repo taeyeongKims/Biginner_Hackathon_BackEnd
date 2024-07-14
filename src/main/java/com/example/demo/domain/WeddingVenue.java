@@ -9,7 +9,7 @@ import lombok.Setter;
 @Embeddable
 public class WeddingVenue {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="venue_id")
     private int id;
 

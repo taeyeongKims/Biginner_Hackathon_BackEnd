@@ -7,7 +7,7 @@ import lombok.Setter;
 @Entity
 @Getter @Setter
 public class Planner {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "planner_id")
     private int id;
 
