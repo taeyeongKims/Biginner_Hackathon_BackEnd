@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter @Setter
 @Embeddable
 public class Studio {
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="studio_id")
     private int id;
 
