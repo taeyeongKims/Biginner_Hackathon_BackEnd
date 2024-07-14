@@ -1,10 +1,10 @@
 package com.example.demo.service;
 
 
+import com.example.demo.Repository.PlannerRepository;
+import com.example.demo.Repository.PlannerRepository2;
 import com.example.demo.domain.Planner;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import com.example.demo.Repository.PlannerRepository;
 import com.example.demo.domain.SdmVendor;
 import com.example.demo.domain.Studio;
 import com.example.demo.domain.WeddingVenue;
@@ -17,17 +17,20 @@ import java.util.List;
 @Transactional
 public class PlannerService {
 
+    private final PlannerRepository2 plannerRepository2;
     private final PlannerRepository plannerRepository;
-  
+
+
     public Planner savePlanner(Planner planner) {
-        return plannerRepository.save(planner);
+        return plannerRepository2.save(planner);
     }
 
     public List<Planner> findAllPlanners() {
-        return plannerRepository.findAll();
+        return plannerRepository2.findAll();
     }
 
-    public PlannerService(PlannerRepository plannerRepository) {
+    public PlannerService(PlannerRepository plannerRepository, PlannerRepository2 plannerRepository2) {
+        this.plannerRepository2 = plannerRepository2;
         this.plannerRepository = plannerRepository;
     }
 
