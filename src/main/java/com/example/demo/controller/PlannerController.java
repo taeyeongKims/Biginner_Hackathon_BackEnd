@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.domain.Planner;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import com.example.demo.domain.SdmVendor;
 import com.example.demo.service.PlannerService;
@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 @Slf4j
+@RestController
 @RequestMapping("/planners")
 public class PlannerController {
 
