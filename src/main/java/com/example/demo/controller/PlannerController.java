@@ -30,7 +30,7 @@ public class PlannerController {
         return ResponseEntity.ok(SdmVendorList);
 
     }
-  
+
     @PostMapping
     public ResponseEntity<Planner> createPlanner(@RequestBody Planner planner) {
         Planner savedPlanner = plannerService.savePlanner(planner);
@@ -41,6 +41,7 @@ public class PlannerController {
     public ResponseEntity<List<Planner>> getAllPlanners() {
         List<Planner> planners = plannerService.findAllPlanners();
         return ResponseEntity.ok(planners);
+}
 }
 
  
