@@ -9,7 +9,7 @@ import lombok.Setter;
 @Embeddable
 public class SdmVendor {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="sdm_vendor_id")
     private int id;
 
