@@ -1,16 +1,17 @@
 package com.example.demo.controller;
 
+import com.example.demo.domain.Planner;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 import com.example.demo.domain.SdmVendor;
 import com.example.demo.service.PlannerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+
 
 import java.util.List;
 @Slf4j
-@RestController
+@RequestMapping("/planners")
 public class PlannerController {
 
     private final PlannerService plannerService;
@@ -19,7 +20,7 @@ public class PlannerController {
         this.plannerService = plannerService;
     }
 
-    @GetMapping("planners/sdmvendor")
+    @GetMapping("/sdmvendor")
     public ResponseEntity<List<SdmVendor>> getSdmVendor(@RequestParam String province,
                                                         @RequestParam String district,
                                                         @RequestParam int minPrice,
@@ -27,5 +28,19 @@ public class PlannerController {
         List<SdmVendor> SdmVendorList = plannerService.getSdmVendor(province, district, minPrice, maxPrice);
 
         return ResponseEntity.ok(SdmVendorList);
+
     }
+  
+    @PostMapping
+    public ResponseEntity<Planner> createPlanner(@RequestBody Planner planner) {
+        Planner savedPlanner = plannerService.savePlanner(planner);
+        return ResponseEntity.ok(savedPlanner);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Planner>> getAllPlanners() {
+        List<Planner> planners = plannerService.findAllPlanners();
+        return ResponseEntity.ok(planners);
 }
+
+ 

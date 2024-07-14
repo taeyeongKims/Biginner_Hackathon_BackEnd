@@ -1,5 +1,9 @@
 package com.example.demo.service;
 
+
+import com.example.demo.domain.Planner;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import com.example.demo.Repository.PlannerRepository;
 import com.example.demo.domain.SdmVendor;
 import com.example.demo.domain.Studio;
@@ -10,10 +14,18 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional(readOnly = true)
+@Transactional
 public class PlannerService {
 
     private final PlannerRepository plannerRepository;
+  
+    public Planner savePlanner(Planner planner) {
+        return plannerRepository.save(planner);
+    }
+
+    public List<Planner> findAllPlanners() {
+        return plannerRepository.findAll();
+    }
 
     public PlannerService(PlannerRepository plannerRepository) {
         this.plannerRepository = plannerRepository;
@@ -31,3 +43,4 @@ public class PlannerService {
         return plannerRepository.findSdmVendor(city, district, min, max);
     }
 }
+

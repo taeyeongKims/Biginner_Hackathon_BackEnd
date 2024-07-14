@@ -23,4 +23,5 @@ public class Planner {
     @JoinColumn(name = "studio_id")
     private Studio studio;
 
+
 }
